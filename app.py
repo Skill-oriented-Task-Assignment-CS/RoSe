@@ -9,17 +9,18 @@ import zipfile
 app = Flask(__name__)
 
 
-def generate_single_file_response(df) :
-     #Convert DataFrame to CSV string
+def generate_single_file_response(df):
+    # Convert DataFrame to CSV string
     csv_data = df.to_csv(index=False)
     # Create a response with the CSV data
     response = make_response(csv_data)
     response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
     response.headers['Content-type'] = 'text/csv'
-    return response 
+    return response
 
-def generate_zip_file_response(df1,df2) :
-     #Convert DataFrame to CSV string
+
+def generate_zip_file_response(df1, df2):
+    # Convert DataFrame to CSV string
     zip_buffer = io.BytesIO()
     with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zip_file:
         zip_file.writestr('data_task.csv', df1.to_csv(index=False))
@@ -27,8 +28,7 @@ def generate_zip_file_response(df1,df2) :
 
     # Set the buffer's position to the start
     zip_buffer.seek(0)
-    return send_file(zip_buffer, download_name='data.zip', as_attachment=True)
-
+    return send_file(zip_buffer, attachment_filename='data.zip', as_attachment=True)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -42,28 +42,26 @@ def index():
         # 1 - jobs
 
         if 'checkbox1' in checkbox_values:
-            index=0
-            df_worker = generate(index,int(input_text_value))
-            synfile=generate_single_file_response(df_worker)
+            index = 0
+            df_worker = generate(index, int(input_text_value))
+            synfile = generate_single_file_response(df_worker)
 
         elif 'checkbox2' in checkbox_values:
-            index=1
-            df_task = generate(index,int(input_text_value))
-            synfile=generate_single_file_response(df_task)
+            index = 1
+            df_task = generate(index, int(input_text_value))
+            synfile = generate_single_file_response(df_task)
 
         elif 'checkbox3' in checkbox_values:
-            df_worker = generate(0,int(input_text_value))
-            df_task = generate(1,int(input_text_value))
-            synfile=generate_zip_file_response(df_task,df_worker)
+            df_worker = generate(0, int(input_text_value))
+            df_task = generate(1, int(input_text_value))
+            synfile = generate_zip_file_response(df_task, df_worker)
 
-        else :
+        else:
             return "Server Error"
-        
+
         return synfile
-       
 
     return render_template('index.html')
-
 
 
 def convert_to_csv(fake_data):
@@ -75,5 +73,6 @@ def convert_to_csv(fake_data):
     csv_stream.seek(0)
     return csv_stream
 
+
 if __name__ == '__main__':
-    app.run(port=5000,host="0.0.0.0")
+    app.run(port=5000, host="0.0.0.0")
