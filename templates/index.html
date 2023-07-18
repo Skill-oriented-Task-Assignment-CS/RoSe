@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CTG-RoSe</title>
+    <style>
+        body {
+            background-color: #808080;
+        }
+
+
+        footer {
+
+        margin-top: 20px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+    }
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            width: 300px;
+            /* height: 400px; */
+            margin: 0 auto;
+            margin-top: 200px;
+        }
+        form {
+            padding: 20px;
+            border-radius: 5px;
+            width: 400px;
+        }
+
+        h3 {
+            
+            text-align: center;
+            background-color: #ADD8E6;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        p {
+            text-align: center;
+            color: #666666;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+    <form method="POST">
+        <h3>Welcome to CTG-RoSe</h3>
+        <p>Generate synthetic skill-oriented task and worker 
+            data from UpWork Dataset</p>
+        <hr>
+    
+        <div style="text-align: center; margin-bottom: 10px;">
+            <label for="checkbox1">Worker Data</label>
+            <input type="checkbox" id="checkbox1" name="checkbox" value="checkbox1" onclick="uncheckAllCheckboxes(this)">
+            <label for="checkbox2">Task Data</label>
+            <input type="checkbox" id="checkbox2" name="checkbox" value="checkbox2" onclick="uncheckAllCheckboxes(this)">
+            <label for="checkbox3">Both</label>
+            <input type="checkbox" id="checkbox3" name="checkbox" value="checkbox3" onclick="uncheckAllCheckboxes(this)">
+        </div>
+
+        <div style="text-align: center; margin-bottom: 20px;">
+            <label for="input_text">Number of samples</label>
+            <input type="text" id="input_text" name="input_text" pattern="[1-9][0-9]*" title="Please enter a valid number (e.g., 1, 2, 10, etc.)." required>
+        </div>
+
+        <!-- <div style="text-align: center; margin-bottom: 10px;">
+            <label for="radio1">UpWork Dataset</label>
+            <input type="radio" id="radio1" name="radio" value="radio1" required>
+            <label for="radio2">Meetup Dataset</label>
+            <input type="radio" id="radio2" name="radio" value="radio2" required>
+        </div> -->
+
+        <div style="text-align: center;">
+            <input type="submit" value="Download">
+        </div>
+    </form>
+
+    <script>
+        function uncheckAllCheckboxes(checkbox) {
+            var checkboxes = document.getElementsByName(checkbox.name);
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i] !== checkbox) {
+                    checkboxes[i].checked = false;
+                }
+            }
+        }
+    </script>
+
+<footer>
+    <hr>
+    <ol>
+    <div>This is the tool described in the paper "CTG-RoSe: Generating Realistic Skill-oriented Data
+            by Conditional Tabular GAN with Efficient Word Embedding", Riya Samanta, Bidyut Saha, and Soumya K. Ghosh</div>
+     <div style="text-align: center;">Copyright © 2023 IIT KGP | Designed by RIYA SAMANTA
+     </div>
+    </ol>
+</footer>
+ 
+
+</body>
+</html>

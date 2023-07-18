@@ -1,0 +1,2 @@
+upwork_jobs_mapper - 40 Clusters
+upwork_worker_mapper - 100 Clusters
