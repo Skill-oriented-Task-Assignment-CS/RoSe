@@ -52,8 +52,8 @@ def index():
             synfile=generate_single_file_response(df_task)
 
         elif 'checkbox3' in checkbox_values:
-            df_worker = generate(0,int(input_text_value))
-            df_task = generate(1,int(input_text_value))
+            df_task = generate(0,int(input_text_value))
+            df_worker = generate(1,int(input_text_value))
             synfile=generate_zip_file_response(df_task,df_worker)
 
         else :
@@ -76,4 +76,8 @@ def convert_to_csv(fake_data):
     return csv_stream
 
 if __name__ == '__main__':
-    app.run(port=5000,host="0.0.0.0")
+    # app.run(port=5000,host="0.0.0.0")
+   
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
+

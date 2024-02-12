@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CTG-RoSe</title>
+    <title>CTG-KrEW</title>
     <style>
         body {
             background-color: #808080;
@@ -51,16 +51,16 @@
 </head>
 <body>
     
-    <form method="POST">
-        <h3>Welcome to CTG-RoSe</h3>
+    <form method="POST" onsubmit="return validateInput();">
+        <h3>Welcome to CTG-KrEW</h3>
         <p>Generate synthetic skill-oriented task and worker 
             data from UpWork Dataset</p>
         <hr>
     
         <div style="text-align: center; margin-bottom: 10px;">
-            <label for="checkbox1">Worker Data</label>
+            <label for="checkbox1">Task Data</label>
             <input type="checkbox" id="checkbox1" name="checkbox" value="checkbox1" onclick="uncheckAllCheckboxes(this)">
-            <label for="checkbox2">Task Data</label>
+            <label for="checkbox2">Worker Data</label>
             <input type="checkbox" id="checkbox2" name="checkbox" value="checkbox2" onclick="uncheckAllCheckboxes(this)">
             <label for="checkbox3">Both</label>
             <input type="checkbox" id="checkbox3" name="checkbox" value="checkbox3" onclick="uncheckAllCheckboxes(this)">
@@ -92,13 +92,24 @@
                 }
             }
         }
+        function validateInput() {
+        var inputValue = document.getElementById('input_text').value;
+        if (parseInt(inputValue) > 10000) {
+            alert('The size should not be more than 10,000 because we are deploying the application server on Heroku free service (having restricted RAM capacity).');
+            return false;
+        }
+        return true;
+    }
+        
     </script>
 
 <footer>
     <hr>
     <ol>
-    <div>This is the tool described in the paper "CTG-RoSe: Generating Realistic Skill-oriented Data
-            by Conditional Tabular GAN with Efficient Word Embedding", Riya Samanta, Bidyut Saha, and Soumya K. Ghosh</div>
+    <div>This is the tool described in the paper "CTG-KrEW: Generating Synthetic 
+        Contextually Correlated Tabular Content by CTGAN with Efficient Word Embedding 
+        and K-Means Clustering
+    </div>
      <div style="text-align: center;">Copyright © 2023 IIT KGP | Designed by RIYA SAMANTA
      </div>
     </ol>
