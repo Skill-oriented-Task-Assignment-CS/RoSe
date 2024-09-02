@@ -1,125 +1,139 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>CTG-KrEW</title>
     <style>
-        body {
-            background-color: #808080;
-        }
+      body {
+        background-color: #808080;
+      }
 
-
-        footer {
-
+      footer {
         margin-top: 20px;
         position: fixed;
         bottom: 0;
         left: 0;
         width: 100%;
         padding: 10px;
-    }
-        form {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 15px;
-            width: 300px;
-            /* height: 400px; */
-            margin: 0 auto;
-            margin-top: 200px;
-        }
-        form {
-            padding: 20px;
-            border-radius: 5px;
-            width: 400px;
-        }
+      }
+      form {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        width: 300px;
+        /* height: 400px; */
+        margin: 0 auto;
+        margin-top: 200px;
+      }
+      form {
+        padding: 20px;
+        border-radius: 5px;
+        width: 400px;
+      }
 
-        h3 {
-            
-            text-align: center;
-            background-color: #ADD8E6;
-            margin-top: 0;
-            margin-bottom: 5px;
-        }
-        p {
-            text-align: center;
-            color: #666666;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
+      h3 {
+        text-align: center;
+        background-color: #add8e6;
+        margin-top: 0;
+        margin-bottom: 5px;
+      }
+      p {
+        text-align: center;
+        color: #666666;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
     </style>
-
-</head>
-<body>
-    
-<<<<<<< HEAD
+  </head>
+  <body>
     <form method="POST">
-        <h3>Welcome to RoSe</h3>
-=======
-    <form method="POST" onsubmit="return validateInput();">
-        <h3>Welcome to CTG-KrEW</h3>
->>>>>>> heroku/main
-        <p>Generate synthetic skill-oriented task and worker 
-            data from UpWork Dataset</p>
-        <hr>
-    
-        <div style="text-align: center; margin-bottom: 10px;">
-            <label for="checkbox1">Task Data</label>
-            <input type="checkbox" id="checkbox1" name="checkbox" value="checkbox1" onclick="uncheckAllCheckboxes(this)">
-            <label for="checkbox2">Worker Data</label>
-            <input type="checkbox" id="checkbox2" name="checkbox" value="checkbox2" onclick="uncheckAllCheckboxes(this)">
-            <label for="checkbox3">Both</label>
-            <input type="checkbox" id="checkbox3" name="checkbox" value="checkbox3" onclick="uncheckAllCheckboxes(this)">
-        </div>
+      <h3>Welcome to KrEW</h3>
+      <p>Generate synthetic skill-oriented task and worker data</p>
+      <hr />
 
-        <div style="text-align: center; margin-bottom: 20px;">
-            <label for="input_text">Number of samples</label>
-            <input type="text" id="input_text" name="input_text" pattern="[1-9][0-9]*" title="Please enter a valid number (e.g., 1, 2, 10, etc.)." required>
-        </div>
+      <div style="text-align: center; margin-bottom: 10px">
+        <label for="checkbox1">Task Data</label>
+        <input
+          type="checkbox"
+          id="checkbox1"
+          name="checkbox"
+          value="checkbox1"
+          onclick="uncheckAllCheckboxes(this)"
+        />
+        <label for="checkbox2">Worker Data</label>
+        <input
+          type="checkbox"
+          id="checkbox2"
+          name="checkbox"
+          value="checkbox2"
+          onclick="uncheckAllCheckboxes(this)"
+        />
+        <label for="checkbox3">Both</label>
+        <input
+          type="checkbox"
+          id="checkbox3"
+          name="checkbox"
+          value="checkbox3"
+          onclick="uncheckAllCheckboxes(this)"
+        />
+      </div>
 
-        <!-- <div style="text-align: center; margin-bottom: 10px;">
+      <div style="text-align: center; margin-bottom: 20px">
+        <label for="input_text">Number of samples</label>
+        <input
+          type="text"
+          id="input_text"
+          name="input_text"
+          pattern="[1-9][0-9]*"
+          title="Please enter a valid number (e.g., 1, 2, 10, etc.)."
+          required
+        />
+      </div>
+
+      <!-- <div style="text-align: center; margin-bottom: 10px;">
             <label for="radio1">UpWork Dataset</label>
             <input type="radio" id="radio1" name="radio" value="radio1" required>
             <label for="radio2">Meetup Dataset</label>
             <input type="radio" id="radio2" name="radio" value="radio2" required>
         </div> -->
 
-        <div style="text-align: center;">
-            <input type="submit" value="Download">
-        </div>
+      <div style="text-align: center">
+        <input type="submit" value="Download" />
+      </div>
     </form>
 
     <script>
-        function uncheckAllCheckboxes(checkbox) {
-            var checkboxes = document.getElementsByName(checkbox.name);
-            for (var i = 0; i < checkboxes.length; i++) {
-                if (checkboxes[i] !== checkbox) {
-                    checkboxes[i].checked = false;
-                }
-            }
+      function uncheckAllCheckboxes(checkbox) {
+        var checkboxes = document.getElementsByName(checkbox.name);
+        for (var i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i] !== checkbox) {
+            checkboxes[i].checked = false;
+          }
         }
-        function validateInput() {
-        var inputValue = document.getElementById('input_text').value;
+      }
+      function validateInput() {
+        var inputValue = document.getElementById("input_text").value;
         if (parseInt(inputValue) > 10000) {
-            alert('The size should not be more than 10,000 because we are deploying the application server on Heroku free service (having restricted RAM capacity).');
-            return false;
+          alert(
+            "The size should not be more than 10,000 because we are deploying the application server on Heroku free service (having restricted RAM capacity)."
+          );
+          return false;
         }
         return true;
-    }
-        
+      }
     </script>
 
-<footer>
-    <hr>
-    <ol>
-    <div>This is the tool described in the paper "CTG-KrEW: Generating Synthetic 
-        Contextually Correlated Tabular Content by CTGAN with Efficient Word Embedding 
-        and K-Means Clustering
-    </div>
-     <div style="text-align: center;">Copyright © 2023 IIT KGP | Designed by RIYA SAMANTA
-     </div>
-    </ol>
-</footer>
- 
-
-</body>
+    <footer>
+      <hr />
+      <ol>
+        <div>
+          This is the tool described in the paper "CTG-KrEW: Generating
+          Synthetic Contextually Correlated Tabular Content by CTGAN with
+          Efficient Word Embedding and K-Means Clustering
+        </div>
+        <div style="text-align: center">
+          Copyright © 2024 IIT KGP | Designed by RIYA SAMANTA
+        </div>
+      </ol>
+    </footer>
+  </body>
 </html>
