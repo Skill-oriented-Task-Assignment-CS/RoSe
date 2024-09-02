@@ -28,7 +28,7 @@ def generate_zip_file_response(df1, df2):
 
     # Set the buffer's position to the start
     zip_buffer.seek(0)
-    return send_file(zip_buffer, attachment_filename='data.zip', as_attachment=True)
+    return send_file(zip_buffer, download_name='data.zip', as_attachment=True)
 
 
 @app.route('/', methods=['GET', 'POST'])
